@@ -3,7 +3,6 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   // If the message was not sent in a guild, return.
   if (!message.guild) return;
-  // If our commands folder doesn't have the specified command, return.
 
 
   // Define your prefix here. Use however you'd like.
@@ -26,7 +25,7 @@ module.exports = async (client, message) => {
   const command = args[1].toLowerCase();
   // Our regular "args" variable
   args = args.slice(2);
-
+  // If our commands folder doesn't have the specified command, return.
   if (!client.commands.has(command)) return;
   try {
     // Get our command from our collection and execute its contents using the parameters supplied
