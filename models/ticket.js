@@ -5,6 +5,7 @@ const ticket = mongoose.Schema({
   channelID: String,
   creatorID: String,
   number: Number,
+  open: Boolean,
   createdTimestamp: String
 });
 module.exports = mongoose.model('Ticket', ticket);

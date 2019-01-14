@@ -13,9 +13,15 @@ module.exports = {
     if (!server) return message.channel.send('Error: There is no configuration document for your server. Please re-add the bot.');
     // If an argument is supplied, follow through to check for an existing document with the corresponding ticket number
     if (args[0]) {
-      const ticket = await Ticket.findOne({
+      const ticket = await Ticket.findOneAndUpdate({
         guildID: message.guild.id,
         number: parseInt(args[0])
+      }, {
+        $set: {
+          open: false
+        }
+      }, {
+        new: true
       });
       // If the ticket is not found
       if (!ticket) return message.channel.send('Error: Invalid ticket number. Make sure to enter a valid ticket number to close, or you\'re in a channel connected to a ticket.');
@@ -31,10 +37,17 @@ module.exports = {
       };
     } else {
       // If there are no arguments supplied, try and delete the channel the command sender is in. Only if there is a ticket connected <-
-      const ticket = await Ticket.findOne({
+      const ticket = await Ticket.findOneAndUpdate({
         guildID: message.guild.id,
         channelID: message.channel.id
+      }, {
+        $set: {
+          open: false
+        }
+      }, {
+        new: true
       });
+
       if (!ticket) return message.channel.send('Error: Invalid ticket number. Make sure to enter a valid ticket number to close, or you\'re in a channel connected to a ticket.');
       try {
         message.channel.delete();

@@ -100,6 +100,7 @@ module.exports = {
       channelID: created.id,
       creatorID: message.author.id,
       number: parseInt(number),
+      open: true,
       createdTimestamp: message.createdAt
     });
     await newticket.save();
