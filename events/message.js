@@ -13,8 +13,6 @@ module.exports = async (client, message) => {
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|\\${prefix})\s*`, 'i');
   // If the command doesn't start with our pattern above, return.
   if (!prefixRegex.test(message.content)) return;
-
-
   // Our complete arguments variable, with whitespace trimmed at the ends and split by infinite whitespace.
   let args = message.content.trim().split(/\s+/g)
 

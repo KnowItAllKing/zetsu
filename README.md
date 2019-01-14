@@ -9,7 +9,7 @@ Zetsu is meant to be a ticket bot, but you may clone and modify as you wish.
 Clone this repository using git.
 
 ```bash
-git clone git@github.com:KnowItAllKing/zetsu.git
+git clone https://github.com/KnowItAllKing/zetsu.git
 ```
 
 ## Credits
