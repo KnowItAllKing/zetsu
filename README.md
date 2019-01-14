@@ -1,6 +1,8 @@
 # Zetsu
 
-Zetsu is a Discord bot made using the Discord.js library. Its code is open-source and free-to-use, however, you may not claim any of it as your own.
+Zetsu is a Discord bot made using the Discord.js library. Its code is open-source and free-to-use, however, you may not claim any of it as your own. 
+
+Zetsu is meant to be a ticket bot, but you may clone and modify as you wish.
 
 ## Installation
 
