@@ -11,7 +11,7 @@ module.exports = {
     let members = [];
     if (!server.perms || server.perms.length < 1) return message.channel.send('The whitelist is empty.');
     for (const perm of server.perms) {
-      const member = await message.guild.fetchMember(perm);
+      const member = message.guild.members.get(perm);
       const role = message.guild.roles.get(perm);
       if (member) members.push(member);
       if (role) roles.push(role);
