@@ -9,9 +9,9 @@ const client = new Discord.Client();
 
 // Login to the Mongo server. Format is: mongodb://IP_or_Web_address:port/database/
 mongoose.connect(process.env.MONGO, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 });
-
 client.commands = new Discord.Collection();
 // This loop reads the ./events folder and attaches each event file to the appropriate event.
 // Credits to Evie Codes and An Idiot's Guide

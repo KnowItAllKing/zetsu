@@ -30,7 +30,9 @@ module.exports = {
     // If the command sender supplied a valid snowflake, use it.
     if (verify && !mention) toremove = args[0];
     // Set the resolved promise of this message object here to m
-    const m = await message.channel.send(`Removing <@${toremove}> from the whitelist... :walking:`);
+    // If the supplied snowflake or mention is a role, add an ampersand so it's mentionable.
+    const bool = message.guild.roles.get(toremove) ? '&' : '';
+    const m = await message.channel.send(`Removing <@${bool}${toremove}> from the whitelist... :walking:`);
     // Await the document update
     try {
       // Check the server document to see if their supplied snowflake exists
@@ -58,8 +60,9 @@ module.exports = {
           perms: newarray
         }
       });
+
       // Edit the m message object to a success message.
-      return m.edit(`Successfully removed <@${toremove}> from the whitelist :white_check_mark:`)
+      return m.edit(`Successfully removed <@${bool}${toremove}> from the whitelist :white_check_mark:`)
 
     } catch (e) {
       return console.error(e);

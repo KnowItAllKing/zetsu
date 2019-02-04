@@ -11,7 +11,7 @@ module.exports = async (client, guild) => {
   if (!trycategory && !defaultcategory) {
     try {
       category = await guild.createChannel('tickets', 'category');
-      category.overwritePermissions(guild.id, {
+      await category.overwritePermissions(guild.id, {
         READ_MESSAGES: false
       });
     } catch (e) {

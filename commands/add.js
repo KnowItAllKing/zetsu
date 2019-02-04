@@ -30,8 +30,10 @@ module.exports = {
     if (!verify && mention) toadd = mention.id;
     // If the command sender supplied a valid snowflake, use it.
     if (verify && !mention) toadd = args[0];
+    // If the supplied snowflake or mention is a role, add an ampersand so it's mentionable.
+    const bool = message.guild.roles.get(toadd) ? '&' : '';
     // Set the resolved promise of this message object here to m
-    const m = await message.channel.send(`Adding <@${toadd}> to the whitelist... :walking:`);
+    const m = await message.channel.send(`Adding <@${bool}${toadd}> to the whitelist... :walking:`);
     // Await the document update
     try {
       // Check the server document to see if their addition already exists
@@ -44,8 +46,9 @@ module.exports = {
           perms: toadd
         }
       });
+
       // Edit the m message object to a success message.
-      return m.edit(`Successfully added <@${toadd}> to the whitelist :white_check_mark:`)
+      return m.edit(`Successfully added <@${bool}${toadd}> to the whitelist :white_check_mark:`)
 
     } catch (e) {
       return console.error(e);

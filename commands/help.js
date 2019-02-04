@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports = {
   name: 'help',
-  execute: async (client, message, args) => {
+  execute: async (client, message) => {
     const embed = new Discord.RichEmbed()
       .setAuthor('Help', message.guild.iconURL)
       .addField('`zetsu add`', 'Add a user or role to the "whitelist" of people who can view all tickets. Requires the `ADMINISTRATOR` permission.\nUsage: `zetsu add @Yahiko`')
@@ -11,6 +11,6 @@ module.exports = {
       .addField('`zetsu tickets`', 'View a list of all open tickets. Requires the `MANAGE MESSAGES` permission.\nUsage: `zetsu tickets`')
       .addField('`zetsu whitelist`', 'View a list of all whitelisted users and roles. Requires the `ADMINISTRATOR` permission. \nUsage: `zetsu whitelist`')
       .setColor('#36393f');
-    message.channel.send(embed);
+    await message.channel.send(embed);
   }
 };

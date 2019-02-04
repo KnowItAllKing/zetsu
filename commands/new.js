@@ -11,7 +11,7 @@ module.exports = {
     // This line is self-explanatory, but I'll explain it anyway. If the document is falsy, send this message.
     if (!server) return message.channel.send('Error: There is no configuration document for your server. Please re-add the bot.');
     // Declare the category channel
-    const ticketcategory = message.guild.channels.get(server.ticketCategory)
+    let ticketcategory = message.guild.channels.get(server.ticketCategory)
     /*
         if (!ticketcategory.permissionsFor(message.guild.me).has('MANAGE_CHANNELS')) {
           try {
@@ -86,7 +86,8 @@ module.exports = {
       // If a whitelist exists, add the people in it to the channel permissions.
       if (server.perms.length >= 1) {
         for (const perm of server.perms) {
-          created.overwritePermissions(perm, {
+          if (!message.guild.members.get(perm)) continue;
+          await created.overwritePermissions(perm, {
             READ_MESSAGES: true
           });
         }
