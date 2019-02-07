@@ -9,7 +9,7 @@ module.exports = {
       open: true
     });
     let msg = '';
-    if (tickets.length === 0) return message.channel.send('There are no open tickets. Create one using `zetsu new`.')
+    if (tickets.length === 0) return message.channel.send('There are no open tickets. Create one using `zetsu new`.');
     for (const ticket of tickets) {
       const toadd = `Ticket #${ticket.number}\nChannel: <#${ticket.channelID}>\nCreator: <@${ticket.creatorID}>\n\n`;
       msg += toadd;

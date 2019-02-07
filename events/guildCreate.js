@@ -23,7 +23,7 @@ module.exports = async (client, guild) => {
     _id: mongoose.Types.ObjectId(),
     guildID: guild.id,
     guildName: guild.name,
-    ticketCategory: trycategory ? trycategory.id : defaultcategory.id || category.id || '0',
+    ticketCategory: trycategory ? trycategory.id : defaultcategory ? defaultcategory.id : category ? category.id : '0',
     perms: []
   });
   try {
