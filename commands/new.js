@@ -10,6 +10,7 @@ module.exports = {
     });
     // This line is self-explanatory, but I'll explain it anyway. If the document is falsy, send this message.
     if (!server) return message.channel.send('Error: There is no configuration document for your server. Please re-add the bot.');
+    if (!server.ticketCategory) return message.channel.send('Error: I do not have sufficient permissions to create a category for you. Please give me `MANAGE_CHANNELS` after you re-add me!');
     // Declare the category channel
     let ticketcategory = message.guild.channels.get(server.ticketCategory)
     /*
